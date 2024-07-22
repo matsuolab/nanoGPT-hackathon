@@ -30,24 +30,8 @@ deactivate
 > [!NOTE]
 > You can set training parameter in below files.
 
-- `configs/default.yaml` : Gaia parameter
-- `configs/ds_config.json` : Deepspeed setting 
-- `scripts/ds_train.sh` : Job script for ABCI
-
 > [!CAUTION] 
-> You must edit below 3 points.
-
-- Row 88 in train.py: 
-    - 88: `YOUR_PROJECT` and `YOUR_ACCOUNT_NAME`
-
-- Row 2 and 17 in configs/default.yaml: 
-    - 2: `WANDB_RUN_NAME`
-    - 17: `PATH_TO_YOUR_GROUP_DIRECTORY`
-
-- Row 6 and 17 in scripts/ds_train.sh
-    - 6: `WANDB_RUN_NAME`
-    - 17: `PATH_TO_GAIA_DIRECTORY`
-
+> You must edit below files.
 
 ## Multinode Training
 ```
