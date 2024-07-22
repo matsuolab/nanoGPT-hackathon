@@ -1,0 +1,7 @@
+torch<3.0
+numpy<2.0 
+transformers<3.0 
+datasets<3.0 
+tiktoken<3.0 
+wandb<3.0 
+tqdm<3.0
