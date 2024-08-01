@@ -308,3 +308,7 @@ def main(cfg: Config) -> None:
     
     if ddp:
         destroy_process_group()
+
+
+if __name__ == "__main__":
+    main()
