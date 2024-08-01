@@ -1,0 +1,8 @@
+batch_size: 12
+block_size: 1024
+bias: false
+real_data: true
+seed: 1337
+device: 'cuda' # examples: 'cpu', 'cuda', 'cuda:0', 'cuda:1', etc.
+compile: true # use PyTorch 2.0 to compile the model to be faster
+profile: false # use pytorch profiler, or just simple bench
