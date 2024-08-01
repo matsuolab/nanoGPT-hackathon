@@ -8,12 +8,12 @@ import time
 import torch
 from model import GPTConfig, GPT
 import hydra
-from omegaconf import DictConfig
+from config.dataclass import Config
 
 dtype = 'bfloat16' if torch.cuda.is_available() and torch.cuda.is_bf16_supported() else 'float16' # 'float32' or 'bfloat16' or 'float16'
 
 @hydra.main(config_path="config", config_name="bench")
-def main(cfg: DictConfig) -> None:
+def main(cfg: Config) -> None:
     device_type = 'cuda' if 'cuda' in cfg.device else 'cpu' # for later use in torch.autocast
     ptdtype = {'float32': torch.float32, 'bfloat16': torch.bfloat16, 'float16': torch.float16}[dtype]
     ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)

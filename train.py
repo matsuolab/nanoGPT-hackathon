@@ -27,7 +27,7 @@ import torch
 from torch.nn.parallel import DistributedDataParallel as DDP
 from torch.distributed import init_process_group, destroy_process_group
 import hydra
-from omegaconf import DictConfig
+from config.dataclass import Config
 import omegaconf
 import deepspeed
 
@@ -68,7 +68,7 @@ class CustomLRScheduler(_LRScheduler):
     
 
 @hydra.main(config_path="config", config_name="train", version_base=None)
-def main(cfg: DictConfig) -> None:
+def main(cfg: Config) -> None:
     setup_torch(cfg.seed)
     # various inits, derived attributes, I/O setup
     ddp = cfg.ddp

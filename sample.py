@@ -9,10 +9,10 @@ import tiktoken
 from model import GPTConfig, GPT
 from utils import setup_torch
 import hydra
-from omegaconf import DictConfig
+from config.dataclass import Config
 
 @hydra.main(config_path="config", config_name="sample")
-def main(cfg: DictConfig) -> None:
+def main(cfg: Config) -> None:
 
     # -----------------------------------------------------------------------------
     dtype = 'bfloat16' if torch.cuda.is_available() and torch.cuda.is_bf16_supported() else 'float16' # 'float32' or 'bfloat16' or 'float16'
