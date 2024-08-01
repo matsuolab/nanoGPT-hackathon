@@ -23,16 +23,27 @@ import math
 import pickle
 from contextlib import nullcontext
 
+import hydra
+from hydra.core.config_store import ConfigStore
 import numpy as np
+from omegaconf import OmegaConf
 import torch
 from torch.nn.parallel import DistributedDataParallel as DDP
 from torch.distributed import init_process_group, destroy_process_group
 
-from model import GPTConfig, GPT
+from config import Config, OpenWebTextConfig, ShakespeareConfig
+from model import GPT
+
+cs = ConfigStore.instance()
+cs.store(name="config", node=Config)
+cs.store(name="openwebtext", group="dataset", node=OpenWebTextConfig)
+cs.store(name="shakespeare", group="dataset", node=SharespeareConfig)
 
 
 @hydra.main(version_base=None, config_name="config")
 def main(cfg: Config) -> None:
+    cfg = Omegaconf.to_object(cfg)
+
     # DDP settings
     backend = 'nccl' # 'nccl', 'gloo', etc.
     # system
